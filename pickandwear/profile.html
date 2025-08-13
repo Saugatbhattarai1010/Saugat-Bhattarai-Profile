@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile | PickWear</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f9fc;
+      color: #333;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    header, footer {
+      background-color: #0072CE;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .profile {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+      animation: slideUp 0.7s ease-in-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile h2 {
+      color: #0072CE;
+      margin-bottom: 1rem;
+    }
+
+    .profile p {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+    }
+
+    .profile h3 {
+      margin-top: 2rem;
+      color: #444;
+    }
+
+    .profile ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .profile li {
+      background: #e9f2ff;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border-radius: 8px;
+      transition: transform 0.2s ease;
+    }
+
+    .profile li:hover {
+      transform: scale(1.02);
+      background-color: #d0e8ff;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Animated Logo */
+    .logo-animation {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      animation: floatLogo 4s ease-in-out infinite;
+      height: 60px;
+    }
+
+    @keyframes floatLogo {
+      0% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+      100% { transform: translateX(-50%) translateY(0); }
+    }
+
+    /* Baby Bag in Bottom Right */
+    .baby-bag {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      height: 100px;
+      opacity: 0.9;
+      z-index: 5;
+      animation: popIn 1s ease-out forwards;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+
+<button onclick="goBack()" style="padding:10px 20px; border:none; background:#000000; color:#fff; border-radius:5px; cursor:pointer;">
+  ← Go Back
+</button>
+
+<script>
+  function goBack() {
+    if (document.referrer) {
+      history.back();
+    } else {
+      window.location.href = 'index.html'; // fallback page
+    }
+  }
+</script>
+
+<body>
+    
+<header style="display:flex; align-items:center; justify-content:space-between; padding:15px 30px; background:#01182b; color:#f7f4f4;">
+  <div class="logo" style="font-weight:bold; font-size:1.5rem; cursor:pointer; animation: floatLogo 4s ease-in-out infinite;">
+    Pick & wear
+  </div>
+  <nav>
+    <a href="index.html" style="color:rgb(253, 253, 253); margin:0 10px; text-decoration:none;">Home</a>
+    <a href="products.html" style="color:rgb(247, 245, 247); margin:0 10px; text-decoration:none;">Shop</a>
+    <a href="about.html" style="color:rgb(243, 245, 245); margin:0 10px; text-decoration:none;">About</a>
+    <a href="contact.html" style="color:rgb(247, 244, 247); margin:0 10px; text-decoration:none;">Contact</a>
+    <a href="login.html" style="color:rgb(252, 252, 245); margin:0 10px; text-decoration:none;">Login/Register</a>
+  </nav>
+   
+  </button>
+
+  <style>
+    @keyframes floatLogo {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</header>
+
+  <!-- Pick & Wear Logo Animation -->
+  <img src="logo.png" alt="Pick & Wear Logo" class="logo-animation" />
+
+  <header>
+    <h1>Welcome to Your Profile</h1>
+  </header>
+
+  <section class="profile">
+    <h2>Hello, John Doe 👋</h2>
+    <p><strong>Email:</strong> john@example.com</p>
+
+    <h3>🧾 Your Order History</h3>
+    <ul>
+      <li><strong>Order #1234</strong> – Delivered ✅</li>
+      <li><strong>Order #1235</strong> – In Transit 🚚</li>
+      <li><strong>Order #1236</strong> – Pending Payment 💳</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 PickWear. All rights reserved.</p>
+  </footer>
+
+  <!-- Baby Carry Bag at Bottom Right -->
+  <img src="baby-bag.png" alt="Baby Carry Bag" class="baby-bag" />
+
+</body>
+</html>

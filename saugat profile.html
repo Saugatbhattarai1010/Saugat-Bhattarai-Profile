@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saugat Bhattarai | Developer Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* 🎨 Animated Background */
+    body {
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #333;
+    }
+
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    header {
+      background: #222;
+      color: #fff;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #00bcd4;
+    }
+
+    .hero {
+      padding: 80px 20px;
+      text-align: center;
+      background: linear-gradient(120deg, #00bcd4, #2196f3);
+      color: #fff;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #000;
+      text-align: center;
+    }
+
+    .project-card,
+    .skill-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #222;
+      color: #aaa;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skills-list span {
+      background-color: #e0f7fa;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+
+    a {
+      color: #2196f3;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    /* 🌈 About Section Gradient Animation */
+    #about {
+      animation: royalGradient 20s infinite ease-in-out;
+      color: #fff;
+      border-radius: 15px;
+      padding: 60px 20px;
+      margin: auto;
+    }
+
+    @keyframes royalGradient {
+      0% { background: linear-gradient(120deg, #4169E1, #FFD700); }
+      25% { background: linear-gradient(120deg, #6A0DAD, #FFD700); }
+      50% { background: linear-gradient(120deg, #B22222, #228B22); }
+      75% { background: linear-gradient(120deg, #228B22, #4169E1); }
+      100% { background: linear-gradient(120deg, #4169E1, #FFD700); }
+    }
+
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: flex-start;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 30px;
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-image {
+      flex: 0 0 240px;
+      max-width: 240px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .about-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+    }
+
+    .about-text h3 {
+      margin-top: 20px;
+      font-size: 22px;
+      color: #fff;
+    }
+
+    .about-text ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    .about-text ul li {
+      margin-bottom: 8px;
+      list-style: "🌟 ";
+    }
+
+    @keyframes shine {
+      0% { transform: translate(-100%, -100%) rotate(45deg); }
+      100% { transform: translate(100%, 100%) rotate(45deg); }
+    }
+
+    @media(max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        padding-top: 10px;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <h1>Saugat Bhattarai</h1>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#soft-skills">Soft Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#involvement">Involvement</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Hi, I'm Saugat Bhattarai</h2>
+    <p>A passionate learner, developer, and tech enthusiast.</p>
+  </section>
+
+  <section id="about">
+    <h2>👑 About Me</h2>
+    <div class="about-container">
+      <img src="C:\Users\Dell\OneDrive\Desktop\my project\image\profile.jpg.jpg" alt="Saugat Bhattarai" class="about-image">
+      <div class="about-text">
+        <p>👋 I'm <strong>Saugat Bhattarai</strong>, currently pursuing <strong>BSc CSIT (Hons)</strong> at <strong>ISMT College</strong>. I'm passionate about building smart, user-friendly digital solutions and love learning new technologies—especially in <strong>web development</strong>, <strong>AI</strong>, and <strong>design</strong>.</p>
+        <p>I aim to solve real-world problems through code and creativity, while constantly improving both my technical and personal skills.</p>
+        <h3>💻 Technical Skills</h3>
+        <ul>
+          <li>Frontend: HTML, CSS, JavaScript (Basics), Bootstrap</li>
+          <li>Backend: PHP, MySQL</li>
+          <li>Programming Languages: Python, C, Java</li>
+          <li>Version Control: Git & GitHub</li>
+          <li>Design & Tools: Figma, Canva, VS Code, XAMPP</li>
+          <li>Beginner in AI & Machine Learning</li>
+        </ul>
+        <h3>🤝 Soft Skills</h3>
+        <ul>
+          <li>Problem-solving and critical thinking</li>
+          <li>Teamwork and collaboration</li>
+          <li>Effective communication and public speaking</li>
+          <li>Time management and leadership</li>
+          <li>Adaptability and willingness to learn</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skill-box">
+      <div class="skills-list">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript (Basics)</span>
+        <span>PHP</span>
+        <span>MySQL</span>
+        <span>Git & GitHub</span>
+        <span>UI/UX Design</span>
+        <span>Bootstrap</span>
+        <span>Python</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="soft-skills">
+    <h2>Soft Skills</h2>
+    <div class="skill-box">
+      <p>I am not only focused on technical knowledge but also excel in essential soft skills that make me a reliable team player and future leader.</p>
+      <div class="skills-list">
+        <span>Leadership</span>
+        <span>Communication</span>
+        <span>Public Speaking</span>
+        <span>Teamwork</span>
+        <span>Problem-Solving</span>
+        <span>Time Management</span>
+        <span>Adaptability</span>
+        <span>Critical Thinking</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-card">
+      <h3>Portfolio Website</h3>
+      <p>Designed and built this responsive portfolio website using HTML and CSS. It's my first step into web development!</p>
+    </div>
+    <div class="project-card">
+      <h3>Job Portal System</h3>
+      <p>Developed a job listing platform using PHP and MySQL. It allows users to register, view, and apply for jobs. Made for a college assignment.</p>
+    </div>
+    <div class="project-card">
+      <h3>Face Recognition App</h3>
+      <p>Used Python with OpenCV to build a basic face detection app that recognizes who's in front of the webcam. Helps improve my understanding of AI and computer vision.</p>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <div class="project-card">
+      <h3>Python Workshop Certificate</h3>
+      <p>Completed a beginner-level Python workshop covering core programming concepts, syntax, and basic application development.</p>
+      <img src="python-certificate.jpg" alt="Python Certificate">
+    </div>
+  </section>
+
+  <section id="involvement">
+    <h2>Social Involvement</h2>
+    <div class="project-card">
+      <h3>Junior Chamber International (JCI)</h3>
+      <p>Active member of JCI Tankisinwari junior. Participated in leadership development, public speaking events, and community service projects.</p>
+      <img src="jci.jpg" alt="JCI Participation">
+    </div>
+    <div class="project-card">
+      <h3>Nepal Scouts</h3>
+      <p>Member of Nepal Scouts. Involved in teamwork training, disaster response programs, and national youth development events.</p>
+      <img src="scout.jpg" alt="Scout Participation">
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:saugb40@gmail.com">saugb40@gmail.com</a></p>
+    <p>LinkedIn: <a href="#">linkedin.com/in/SaugatBhattarai</a></p>
+    <p>GitHub: <a href="#">github.com/SaugatBhattarai</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Saugat Bhattarai. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

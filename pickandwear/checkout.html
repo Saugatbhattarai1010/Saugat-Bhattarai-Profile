@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout - Pick and Wear</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Base Styling */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f2f5f8;
+      color: #333;
+    }
+
+    header, footer {
+      background-color: #111;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    /* Checkout Container */
+    .checkout {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease;
+    }
+
+    .checkout h2, .checkout h3 {
+      color: #f7941d;
+      margin-bottom: 10px;
+    }
+
+    /* Form Fields */
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-size: 1rem;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    /* Button */
+    .btn {
+      display: inline-block;
+      background: #28a745;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease, transform 0.2s;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background: #218838;
+      transform: scale(1.05);
+    }
+
+    /* Confirmation Message */
+    .thank-you {
+      display: none;
+      background: #d4edda;
+      color: #155724;
+      padding: 15px;
+      margin-top: 30px;
+      border-left: 5px solid #28a745;
+      border-radius: 5px;
+      animation: fadeIn 0.5s ease-in-out;
+      font-size: 1.1rem;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .checkout {
+        padding: 20px;
+        margin: 20px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🧾 Pick and Wear - Checkout</h1>
+  </header>
+<button onclick="goBack()" style="padding:10px 20px; border:none; background:#000000; color:#fff; border-radius:5px; cursor:pointer;">
+  ← Go Back
+</button>
+<script>
+  function goBack() {
+    if (document.referrer) {
+      history.back();
+    } else {
+      window.location.href = 'index.html'; // fallback page
+    }
+  }
+</script>
+  <section class="checkout">
+    <h2>Checkout</h2>
+    <form id="checkoutForm" onsubmit="return handleCheckout(event)">
+      <h3>Shipping Address</h3>
+      <input type="text" placeholder="Full Name" required>
+      <input type="text" placeholder="Address" required>
+      <input type="text" placeholder="City" required>
+
+      <h3>Payment</h3>
+      <label><input type="radio" name="pay" required> Cash on Delivery</label>
+      <label><input type="radio" name="pay"> Online Payment</label>
+
+      <h3>Order Summary</h3>
+<p id="item-summary">🧥 Classic Shirt × <span id="qty">1</span> - <strong>$<span id="price">19.99</span></strong></p>
+
+<!-- Optional Quantity Control -->
+<label for="quantity">Quantity:</label>
+<input type="number" id="quantity" value="1" min="1" onchange="updateTotal()">
+
+      <button class="btn" type="submit">Place Order</button>
+    </form>
+
+    <div class="thank-you" id="thankYouMessage">
+      🎉 Thank you! Your order has been placed successfully.
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Pick and Wear. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function handleCheckout(event) {
+      event.preventDefault();
+      const form = document.getElementById("checkoutForm");
+      const thankYou = document.getElementById("thankYouMessage");
+
+      form.style.display = "none";
+      thankYou.style.display = "block";
+
+      // Optional redirect after 3 seconds
+      // setTimeout(() => window.location.href = "index.html", 3000);
+      return false;
+    }
+    function handleCheckout(event) {
+  event.preventDefault();
+  const form = document.getElementById("checkoutForm");
+  const thankYou = document.getElementById("thankYouMessage");
+
+  form.style.display = "none";
+  thankYou.style.display = "block";
+
+  return false;
+}
+
+// Calculate total price
+function updateTotal() {
+  const unitPrice = 19.99;
+  const qty = parseInt(document.getElementById("quantity").value) || 1;
+  const total = (unitPrice * qty).toFixed(2);
+
+  document.getElementById("qty").textContent = qty;
+  document.getElementById("price").textContent = total;
+}
+
+  </script>
+  
+</body>
+</html>

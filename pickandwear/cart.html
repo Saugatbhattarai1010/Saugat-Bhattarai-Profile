@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart - Pick and Wear</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Existing styles (same as before) */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f4f8fb;
+      color: #333;
+    }
+
+    header, footer {
+      background-color: #111;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    .cart {
+      padding: 50px 30px;
+      max-width: 1000px;
+      margin: auto;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      animation: slideIn 1s ease;
+    }
+
+    .cart h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #f7941d;
+      animation: popIn 1s ease;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      text-align: center;
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    input[type="number"] {
+      width: 60px;
+      padding: 5px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 8px 15px;
+      background: #ff4d4d;
+      border: none;
+      border-radius: 20px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #c93030;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #28a745;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #218838;
+      transform: scale(1.05);
+    }
+
+    .cart p {
+      text-align: right;
+      font-size: 1.2rem;
+      font-weight: bold;
+      animation: fadeInUp 1s ease;
+    }
+
+    /* Animations */
+    @keyframes slideIn {
+      0% { transform: translateY(50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🛒 Pick and Wear</h1>
+  </header>
+
+  <section class="cart">
+    <h2>Your Cart</h2>
+    <table id="cartTable">
+      <tr>
+        <th>Item</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+      <tr>
+        <td>Classic Shirt</td>
+        <td><input type="number" value="1" min="1" class="qty" onchange="updateTotal(this)"></td>
+        <td class="price">$19.99</td>
+        <td class="item-total">$19.99</td>
+        <td><button onclick="removeItem(this)">Remove</button></td>
+      </tr>
+    </table>
+
+    <p id="grandTotal">Total: $19.99</p>
+    <div style="text-align:right;">
+      <a href="checkout.html" class="btn">Proceed to Checkout</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Pick and Wear. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function updateTotal(input) {
+      const row = input.closest("tr");
+      const price = parseFloat(row.querySelector(".price").innerText.replace("$", ""));
+      const qty = parseInt(input.value);
+      const totalCell = row.querySelector(".item-total");
+      const itemTotal = (price * qty).toFixed(2);
+      totalCell.innerText = `$${itemTotal}`;
+
+      calculateGrandTotal();
+    }
+
+    function calculateGrandTotal() {
+      let grandTotal = 0;
+      document.querySelectorAll(".item-total").forEach(cell => {
+        grandTotal += parseFloat(cell.innerText.replace("$", ""));
+      });
+      document.getElementById("grandTotal").innerText = `Total: $${grandTotal.toFixed(2)}`;
+    }
+
+    function removeItem(button) {
+      const row = button.closest("tr");
+      row.remove();
+      calculateGrandTotal();
+    }
+
+    // Optional: Initial call to ensure total is accurate on load
+    calculateGrandTotal();
+  </script>
+</body>
+</html>
